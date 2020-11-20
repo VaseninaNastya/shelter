@@ -99,7 +99,6 @@ switch(listWidth ){
 window.addEventListener('resize', function(event){
 
     listWidth = document.querySelector("#pets").offsetWidth
-console.log('listWidth',listWidth);
 numberOfPages = 6
  switch(listWidth ){
       case 580:
@@ -114,16 +113,21 @@ numberOfPages = 6
 
 if(pageCounter==0){
     document.querySelector("#prevPage").setAttribute("disabled", "disabled");
-    document.querySelector("#firstPage").setAttribute("disabled", "disabled")
+    document.querySelector("#firstPage").setAttribute("disabled", "disabled");
+    document.querySelector("#prevPage").classList.add("disabled");
+    document.querySelector("#firstPage").classList.add("disabled");
+
+    
 }
 if(pageCounter>numberOfPages -1){
     pageCounter=numberOfPages -1;
 }
 if(pageCounter!=numberOfPages-1){
     document.querySelector("#nextPage").removeAttribute("disabled");
-    document.querySelector("#lastPage").removeAttribute("disabled")
+    document.querySelector("#lastPage").removeAttribute("disabled");
+    document.querySelector("#nextPage").classList.remove("disabled");
+    document.querySelector("#lastPage").classList.remove("disabled");
 }
-console.log('pageCounter',pageCounter);
 document.querySelector("#pets").style.marginLeft= `calc(${-(listWidth+40)*pageCounter}px)`
 document.querySelector("#numberOfPage").innerHTML = `<a href="#">${1+pageCounter}</a>`
 });
@@ -138,9 +142,8 @@ document.querySelector("#prevPage").addEventListener("click" ,()=>{
     }
     if(pageCounter!=numberOfPages-1){
         document.querySelector("#nextPage").removeAttribute("disabled");
-        document.querySelector("#lastPage").removeAttribute("disabled")
+        document.querySelector("#lastPage").removeAttribute("disabled");
     }
-    console.log('pageCounter',pageCounter);
     document.querySelector("#pets").style.marginLeft= `calc(${-(listWidth+40)*pageCounter}px)`
     document.querySelector("#numberOfPage").innerHTML = `<a href="#">${1+pageCounter}</a>`
 }) 
@@ -150,13 +153,12 @@ document.querySelector("#nextPage").addEventListener( "click" ,()=>{
     }
     if(pageCounter!=0){
         document.querySelector("#prevPage").removeAttribute("disabled");
-        document.querySelector("#firstPage").removeAttribute("disabled")
+        document.querySelector("#firstPage").removeAttribute("disabled");
     }
     if(pageCounter==numberOfPages -1){
         document.querySelector("#nextPage").setAttribute("disabled", "disabled");
-        document.querySelector("#lastPage").setAttribute("disabled", "disabled")
+        document.querySelector("#lastPage").setAttribute("disabled", "disabled");
     }
-    console.log('pageCounter',pageCounter);
     document.querySelector("#pets").style.marginLeft= `calc(${-(listWidth+40)*pageCounter}px)`
     document.querySelector("#numberOfPage").innerHTML = `<a href="#">${1+pageCounter}</a>`
 }) 
