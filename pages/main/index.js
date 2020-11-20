@@ -65,7 +65,6 @@ const updatePetsListRight = ()=>{
         if (isPush)         updatePetsList.push(randElem)
     }
     newPetsList =[...newPetsList, ...updatePetsList] ;
-    console.log('newPetsList',newPetsList);
     createPets(newPetsList);
 }
 const updatePetsListLeft = ()=>{
@@ -83,7 +82,6 @@ const updatePetsListLeft = ()=>{
         if (isPush)         updatePetsList.push(randElem)
     }
     newPetsList =[ ...updatePetsList,...newPetsList] ;
-    console.log('newPetsList',newPetsList);
     createPets(newPetsList);
 }
 
@@ -128,9 +126,6 @@ document.querySelector(".ourFriends_arrow_left").addEventListener( "click" ,()=>
         document.querySelector("#pets").classList.remove("ourFriends_slider_list__pre-margin")
         document.querySelector("#pets").classList.remove("ourFriends_slider_list__margin-left")
     },501)
-    //console.log("newPetsList1111111111111",newPetsList);
-   // setTimeout(()=>newPetsList=newPetsList.slice(0,3),650)
-    //setTimeout(()=>createPets(newPetsList),650)
 }) 
 
 const modal_close = document.querySelector('.modal_close');
