@@ -31,7 +31,6 @@ document.querySelector("#burger_icon_menu").addEventListener( "click" ,()=>{
     document.querySelector("body").classList.remove("overflow_body");
 }) 
 
-
 let pets = []; //8
 let newPetsList = []; //3
 const request = new XMLHttpRequest();
@@ -64,7 +63,6 @@ const updatePetsListRight = ()=>{
             }
         }
         if (isPush)         updatePetsList.push(randElem)
-        
     }
     newPetsList =[...newPetsList, ...updatePetsList] ;
     createPets(newPetsList);
@@ -86,30 +84,11 @@ const updatePetsListLeft = ()=>{
     newPetsList =[ ...updatePetsList,...newPetsList] ;
     createPets(newPetsList);
 }
-const cutNewPetsListRight=()=>{
-    newPetsList=newPetsList.slice(3,6)
-    createPets(newPetsList);
-
-    document.querySelector("#pets").classList.add("ourFriends_slider_list_margin_off");
-
-}
-
-const cutNewPetsListLeft=()=>{
-    newPetsList=newPetsList.slice(0,3)
-    createPets(newPetsList);
-    document.querySelector("#pets").classList.add("ourFriends_slider_list_margin_off");
-}
-
-
 
 const createPets =(petsList)=>{
     const elem = document.querySelector("#pets")
     elem.innerHTML = createElements(petsList)
 }
-
-
-
-
 
 createElements = (petsList) => {
     let str ='';
@@ -131,30 +110,28 @@ createElements = (petsList) => {
     return str;
 }
 document.querySelector(".ourFriends_arrow_right").addEventListener( "click" ,()=>{
-    document.querySelector("#pets").classList.add("ourFriends_slider_list_margin_right");
     updatePetsListRight();
-    setTimeout(()=>{
-        cutNewPetsListRight();
-    },1)
-
-
+    setTimeout(()=>document.querySelector("#pets").classList.add("ourFriends_slider_list__margin-right"),0)
+    setTimeout(()=>newPetsList=newPetsList.slice(3,6),0)
+    setTimeout(()=>{createPets(newPetsList)
+        document.querySelector("#pets").classList.remove("ourFriends_slider_list__margin-right")
+        },501)
 }) 
 document.querySelector(".ourFriends_arrow_left").addEventListener( "click" ,()=>{
-    document.querySelector("#pets").classList.add("ourFriends_slider_list_margin_left");
-    updatePetsListLeft();
-    setTimeout(()=>{cutNewPetsListLeft()},1)
+    updatePetsListLeft()
+    document.querySelector("#pets").classList.add("ourFriends_slider_list__pre-margin")
+   setTimeout(()=>document.querySelector("#pets").classList.add("ourFriends_slider_list__margin-left"),0)
+    setTimeout(()=>{newPetsList=newPetsList.slice(0,3)
+        createPets(newPetsList)
+        document.querySelector("#pets").classList.remove("ourFriends_slider_list__pre-margin")
+        document.querySelector("#pets").classList.remove("ourFriends_slider_list__margin-left")
+    },501)
 }) 
-
-
-
-
 
 const modal_close = document.querySelector('.modal_close');
     const modal_main = document.querySelector('.modal_main');
     const modal = document.querySelector('.modal');
     const ourFriends_slider_item = document.querySelector('.ourFriends_slider_item');
-
-
 
 function showModal(i) {
     setTimeout(()=>{
@@ -171,7 +148,6 @@ function showModal(i) {
         document.querySelector("#modal_breed").innerHTML=newPetsList[i].breed;
         
     },1000)
-
 }
 
 function onClickModal(e) {

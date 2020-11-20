@@ -301,18 +301,17 @@ align-items: center;
     grid-column-gap: 90px;
     width: 100%;
 }
-.ourFriends_slider_list_margin_right{
+.ourFriends_slider_list__margin-right{
     margin-left: -1080px;
     transition: margin-left 0.5s;
 }
-.ourFriends_slider_list_margin_left{
-    margin-right: -1080px;
-    transition: margin-right 0.5s;
 
+.ourFriends_slider_list__pre-margin{
+    margin-left: -1080px;
 }
-.ourFriends_slider_list_margin_off{
-    margin: 0px;
-    transition: margin 0s;
+.ourFriends_slider_list__margin-left{
+    margin-left: 0px;
+    transition:all 0.5s;
 }
 .ourFriends_title{
     width: 400px;
